@@ -1,0 +1,50 @@
+﻿@model Wagenpark.Models.onderhoud
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>onderhoud</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.onderhoudsdatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.onderhoudsdatum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kosten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kosten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.auto_kenteken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.auto_kenteken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.werkplaats_werkplaatsnr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.werkplaats_werkplaatsnr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.auto_onderhoud_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

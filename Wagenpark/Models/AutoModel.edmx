@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="auto_id" />
+          </Key>
+          <Property Name="auto_id" Type="int" Nullable="false" />
+          <Property Name="kenteken" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="merk" Type="nvarchar" MaxLength="25" />
+          <Property Name="Type" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEALER_DealerNr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AutoModelStoreContainer">
+          <EntitySet Name="auto" EntityType="Self.auto" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="auto_id" />
+          </Key>
+          <Property Name="auto_id" Type="Int32" Nullable="false" />
+          <Property Name="kenteken" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="merk" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DEALER_DealerNr" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="autodingeke" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="autoes" EntityType="Self.auto" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoModelStoreContainer" CdmEntityContainer="autodingeke">
+          <EntitySetMapping Name="autoes">
+            <EntityTypeMapping TypeName="AutoModel.auto">
+              <MappingFragment StoreEntitySet="auto">
+                <ScalarProperty Name="auto_id" ColumnName="auto_id" />
+                <ScalarProperty Name="kenteken" ColumnName="kenteken" />
+                <ScalarProperty Name="merk" ColumnName="merk" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DEALER_DealerNr" ColumnName="DEALER_DealerNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
