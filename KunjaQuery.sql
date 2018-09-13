@@ -1,21 +1,3 @@
---Create Database Kunja
-
-USE MASTER;
-
-IF EXISTS (SELECT [name] FROM sys.databases WHERE [name] = 'KunjaBoekingDB' )   
-BEGIN   
-ALTER DATABASE KunjaBoekingDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE   
-DROP DATABASE KunjaBoekingDB ;   
-END     
-
-
-CREATE database	KunjaBoekingDB;
-GO
-
-use KunjaBoekingDB
-
-
--- Create ERD tabels Kunja
 CREATE TABLE gast 
 (
 gastID	INT NOT NULL,
@@ -81,3 +63,6 @@ ALTER TABLE lodge ADD CONSTRAINT lodge_lodgetype_FK FOREIGN KEY ( lodgeTypeID ) 
 ON DELETE NO ACTION 
 ON UPDATE 
 NO ACTION
+
+
+select * from gast;
