@@ -58,11 +58,11 @@ namespace Kunja
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "53371525833-ti59ub4bsatvu3ljquhbghdhicaa9o5q.apps.googleusercontent.com",
+                ClientSecret = "4NeyXoaJ6-r9FyzfUy6nRnAo"
+            });
         }
     }
 }
