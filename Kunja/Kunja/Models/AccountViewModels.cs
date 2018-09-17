@@ -70,6 +70,38 @@ namespace Kunja.Models
         public string Email { get; set; }
 
         [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Voornaam")]
+        public string voornaam { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Achternaam")]
+        public string achternaam { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Adres")]
+        public string adres { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Woonplaats")]
+        public string woonplaats { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Postcode")]
+        public string postcode { get; set; }
+   
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Telefoonnummer")]
+        public string telNr { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

@@ -237,3 +237,4 @@ D:\Users\thijm\Source\Repos\ProjectKunja33\Kunja\Kunja\obj\Debug\Kunja.csproj.Co
 D:\Users\thijm\Source\Repos\ProjectKunja33\Kunja\Kunja\obj\Debug\Kunja.csproj.CopyComplete
 D:\Users\thijm\Source\Repos\ProjectKunja33\Kunja\Kunja\obj\Debug\Kunja.dll
 D:\Users\thijm\Source\Repos\ProjectKunja33\Kunja\Kunja\obj\Debug\Kunja.pdb
+D:\Users\thijm\Source\Repos\ProjectKunja33\Kunja\Kunja\obj\Debug\Kunja.csprojAssemblyReference.cache
