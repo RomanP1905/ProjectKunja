@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A3D6D6_KunjaRensModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="boeking">
+          <Key>
+            <PropertyRef Name="boekingID" />
+          </Key>
+          <Property Name="boekingID" Type="int" Nullable="false" />
+          <Property Name="gastID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gast">
+          <Key>
+            <PropertyRef Name="gastID" />
+          </Key>
+          <Property Name="gastID" Type="int" Nullable="false" />
+          <Property Name="voornaam" Type="nvarchar" MaxLength="25" />
+          <Property Name="achternaam" Type="nvarchar" MaxLength="255" />
+          <Property Name="adres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="woonplaats" Type="nvarchar" MaxLength="100" />
+          <Property Name="postcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="telNr" Type="nvarchar" MaxLength="25" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lodge">
+          <Key>
+            <PropertyRef Name="lodgeID" />
+          </Key>
+          <Property Name="lodgeID" Type="int" Nullable="false" />
+          <Property Name="lodgeTypeID" Type="int" Nullable="false" />
+          <Property Name="lodgeNaam" Type="nvarchar" MaxLength="50" />
+          <Property Name="lodgeNR" Type="nvarchar" MaxLength="50" />
+          <Property Name="bezettingsgraad" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="lodgetype">
+          <Key>
+            <PropertyRef Name="lodgeTypeID" />
+          </Key>
+          <Property Name="lodgeTypeID" Type="int" Nullable="false" />
+          <Property Name="lodgeTypeNaam" Type="nvarchar" MaxLength="100" />
+          <Property Name="lodgeTypeOmschrijving" Type="nvarchar" MaxLength="250" />
+          <Property Name="aantalpersonen" Type="int" Nullable="false" />
+          <Property Name="prijs" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reservering">
+          <Key>
+            <PropertyRef Name="reserveringID" />
+          </Key>
+          <Property Name="reserveringID" Type="int" Nullable="false" />
+          <Property Name="lodgeID" Type="int" Nullable="false" />
+          <Property Name="boekingID" Type="int" Nullable="false" />
+          <Property Name="incheckDatum" Type="datetime" Nullable="false" />
+          <Property Name="uitcheckDatum" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="boeking_gast_FK">
+          <End Role="gast" Type="Self.gast" Multiplicity="1" />
+          <End Role="boeking" Type="Self.boeking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gast">
+              <PropertyRef Name="gastID" />
+            </Principal>
+            <Dependent Role="boeking">
+              <PropertyRef Name="gastID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lodge_lodgetype_FK">
+          <End Role="lodgetype" Type="Self.lodgetype" Multiplicity="1" />
+          <End Role="lodge" Type="Self.lodge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lodgetype">
+              <PropertyRef Name="lodgeTypeID" />
+            </Principal>
+            <Dependent Role="lodge">
+              <PropertyRef Name="lodgeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservering_boeking_FK">
+          <End Role="boeking" Type="Self.boeking" Multiplicity="1" />
+          <End Role="reservering" Type="Self.reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="boeking">
+              <PropertyRef Name="boekingID" />
+            </Principal>
+            <Dependent Role="reservering">
+              <PropertyRef Name="boekingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservering_lodge_FK">
+          <End Role="lodge" Type="Self.lodge" Multiplicity="1" />
+          <End Role="reservering" Type="Self.reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lodge">
+              <PropertyRef Name="lodgeID" />
+            </Principal>
+            <Dependent Role="reservering">
+              <PropertyRef Name="lodgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A3D6D6_KunjaRensModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="boeking" EntityType="Self.boeking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gast" EntityType="Self.gast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lodge" EntityType="Self.lodge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lodgetype" EntityType="Self.lodgetype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reservering" EntityType="Self.reservering" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="boeking_gast_FK" Association="Self.boeking_gast_FK">
+            <End Role="gast" EntitySet="gast" />
+            <End Role="boeking" EntitySet="boeking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="lodge_lodgetype_FK" Association="Self.lodge_lodgetype_FK">
+            <End Role="lodgetype" EntitySet="lodgetype" />
+            <End Role="lodge" EntitySet="lodge" />
+          </AssociationSet>
+          <AssociationSet Name="reservering_boeking_FK" Association="Self.reservering_boeking_FK">
+            <End Role="boeking" EntitySet="boeking" />
+            <End Role="reservering" EntitySet="reservering" />
+          </AssociationSet>
+          <AssociationSet Name="reservering_lodge_FK" Association="Self.reservering_lodge_FK">
+            <End Role="lodge" EntitySet="lodge" />
+            <End Role="reservering" EntitySet="reservering" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A3D6D6_KunjaRensModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="boeking">
+          <Key>
+            <PropertyRef Name="boekingID" />
+          </Key>
+          <Property Name="boekingID" Type="Int32" Nullable="false" />
+          <Property Name="gastID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gast" Relationship="Self.boeking_gast_FK" FromRole="boeking" ToRole="gast" />
+          <NavigationProperty Name="reservering" Relationship="Self.reservering_boeking_FK" FromRole="boeking" ToRole="reservering" />
+        </EntityType>
+        <EntityType Name="gast">
+          <Key>
+            <PropertyRef Name="gastID" />
+          </Key>
+          <Property Name="gastID" Type="Int32" Nullable="false" />
+          <Property Name="voornaam" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="achternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="woonplaats" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="telNr" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="boeking" Relationship="Self.boeking_gast_FK" FromRole="gast" ToRole="boeking" />
+        </EntityType>
+        <EntityType Name="lodge">
+          <Key>
+            <PropertyRef Name="lodgeID" />
+          </Key>
+          <Property Name="lodgeID" Type="Int32" Nullable="false" />
+          <Property Name="lodgeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="lodgeNaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lodgeNR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bezettingsgraad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="lodgetype" Relationship="Self.lodge_lodgetype_FK" FromRole="lodge" ToRole="lodgetype" />
+          <NavigationProperty Name="reservering" Relationship="Self.reservering_lodge_FK" FromRole="lodge" ToRole="reservering" />
+        </EntityType>
+        <EntityType Name="lodgetype">
+          <Key>
+            <PropertyRef Name="lodgeTypeID" />
+          </Key>
+          <Property Name="lodgeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="lodgeTypeNaam" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lodgeTypeOmschrijving" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="aantalpersonen" Type="Int32" Nullable="false" />
+          <Property Name="prijs" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="lodge" Relationship="Self.lodge_lodgetype_FK" FromRole="lodgetype" ToRole="lodge" />
+        </EntityType>
+        <EntityType Name="reservering">
+          <Key>
+            <PropertyRef Name="reserveringID" />
+          </Key>
+          <Property Name="reserveringID" Type="Int32" Nullable="false" />
+          <Property Name="lodgeID" Type="Int32" Nullable="false" />
+          <Property Name="boekingID" Type="Int32" Nullable="false" />
+          <Property Name="incheckDatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="uitcheckDatum" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="boeking" Relationship="Self.reservering_boeking_FK" FromRole="reservering" ToRole="boeking" />
+          <NavigationProperty Name="lodge" Relationship="Self.reservering_lodge_FK" FromRole="reservering" ToRole="lodge" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="boeking_gast_FK">
+          <End Role="gast" Type="Self.gast" Multiplicity="1" />
+          <End Role="boeking" Type="Self.boeking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gast">
+              <PropertyRef Name="gastID" />
+            </Principal>
+            <Dependent Role="boeking">
+              <PropertyRef Name="gastID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservering_boeking_FK">
+          <End Role="boeking" Type="Self.boeking" Multiplicity="1" />
+          <End Role="reservering" Type="Self.reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="boeking">
+              <PropertyRef Name="boekingID" />
+            </Principal>
+            <Dependent Role="reservering">
+              <PropertyRef Name="boekingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lodge_lodgetype_FK">
+          <End Role="lodgetype" Type="Self.lodgetype" Multiplicity="1" />
+          <End Role="lodge" Type="Self.lodge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lodgetype">
+              <PropertyRef Name="lodgeTypeID" />
+            </Principal>
+            <Dependent Role="lodge">
+              <PropertyRef Name="lodgeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservering_lodge_FK">
+          <End Role="lodge" Type="Self.lodge" Multiplicity="1" />
+          <End Role="reservering" Type="Self.reservering" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lodge">
+              <PropertyRef Name="lodgeID" />
+            </Principal>
+            <Dependent Role="reservering">
+              <PropertyRef Name="lodgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DB_A3D6D6_KunjaRensEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="boeking" EntityType="Self.boeking" />
+          <EntitySet Name="gast" EntityType="Self.gast" />
+          <EntitySet Name="lodge" EntityType="Self.lodge" />
+          <EntitySet Name="lodgetype" EntityType="Self.lodgetype" />
+          <EntitySet Name="reservering" EntityType="Self.reservering" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="boeking_gast_FK" Association="Self.boeking_gast_FK">
+            <End Role="gast" EntitySet="gast" />
+            <End Role="boeking" EntitySet="boeking" />
+          </AssociationSet>
+          <AssociationSet Name="reservering_boeking_FK" Association="Self.reservering_boeking_FK">
+            <End Role="boeking" EntitySet="boeking" />
+            <End Role="reservering" EntitySet="reservering" />
+          </AssociationSet>
+          <AssociationSet Name="lodge_lodgetype_FK" Association="Self.lodge_lodgetype_FK">
+            <End Role="lodgetype" EntitySet="lodgetype" />
+            <End Role="lodge" EntitySet="lodge" />
+          </AssociationSet>
+          <AssociationSet Name="reservering_lodge_FK" Association="Self.reservering_lodge_FK">
+            <End Role="lodge" EntitySet="lodge" />
+            <End Role="reservering" EntitySet="reservering" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A3D6D6_KunjaRensModelStoreContainer" CdmEntityContainer="DB_A3D6D6_KunjaRensEntities1">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="boeking">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.boeking">
+              <MappingFragment StoreEntitySet="boeking">
+                <ScalarProperty Name="boekingID" ColumnName="boekingID" />
+                <ScalarProperty Name="gastID" ColumnName="gastID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gast">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.gast">
+              <MappingFragment StoreEntitySet="gast">
+                <ScalarProperty Name="gastID" ColumnName="gastID" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="woonplaats" ColumnName="woonplaats" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="telNr" ColumnName="telNr" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lodge">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.lodge">
+              <MappingFragment StoreEntitySet="lodge">
+                <ScalarProperty Name="lodgeID" ColumnName="lodgeID" />
+                <ScalarProperty Name="lodgeTypeID" ColumnName="lodgeTypeID" />
+                <ScalarProperty Name="lodgeNaam" ColumnName="lodgeNaam" />
+                <ScalarProperty Name="lodgeNR" ColumnName="lodgeNR" />
+                <ScalarProperty Name="bezettingsgraad" ColumnName="bezettingsgraad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lodgetype">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.lodgetype">
+              <MappingFragment StoreEntitySet="lodgetype">
+                <ScalarProperty Name="lodgeTypeID" ColumnName="lodgeTypeID" />
+                <ScalarProperty Name="lodgeTypeNaam" ColumnName="lodgeTypeNaam" />
+                <ScalarProperty Name="lodgeTypeOmschrijving" ColumnName="lodgeTypeOmschrijving" />
+                <ScalarProperty Name="aantalpersonen" ColumnName="aantalpersonen" />
+                <ScalarProperty Name="prijs" ColumnName="prijs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservering">
+            <EntityTypeMapping TypeName="DB_A3D6D6_KunjaRensModel.reservering">
+              <MappingFragment StoreEntitySet="reservering">
+                <ScalarProperty Name="reserveringID" ColumnName="reserveringID" />
+                <ScalarProperty Name="lodgeID" ColumnName="lodgeID" />
+                <ScalarProperty Name="boekingID" ColumnName="boekingID" />
+                <ScalarProperty Name="incheckDatum" ColumnName="incheckDatum" />
+                <ScalarProperty Name="uitcheckDatum" ColumnName="uitcheckDatum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB_A3D6D6_KunjaRensModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
