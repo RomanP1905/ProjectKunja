@@ -37,7 +37,7 @@ namespace Kunja
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -74,7 +74,7 @@ namespace Kunja
                appId: "285595522167301",
                appSecret: "8e57aed5e81ec40b64f0ebca54039740");
 
-            
+
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
