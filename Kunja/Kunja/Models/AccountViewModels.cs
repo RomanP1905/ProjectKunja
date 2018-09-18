@@ -73,33 +73,33 @@ namespace Kunja.Models
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         [DataType(DataType.Text)]
         [Display(Name = "Voornaam")]
-        public string voornaam { get; set; }
+        public string FirstName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         [DataType(DataType.Text)]
         [Display(Name = "Achternaam")]
-        public string achternaam { get; set; }
+        public string LastName { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Adres")]
-        public string adres { get; set; }
+        public string Address { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Woonplaats")]
-        public string woonplaats { get; set; }
+        public string City { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Postcode")]
-        public string postcode { get; set; }
+        public string PostalCode { get; set; }
    
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Telefoonnummer")]
-        public string telNr { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

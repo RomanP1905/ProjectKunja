@@ -17,7 +17,7 @@ namespace Kunja.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public lodgetype()
         {
-            this.lodge = new HashSet<lodge>();
+            this.lodges = new HashSet<lodge>();
         }
     
         public int lodgeTypeID { get; set; }
@@ -27,6 +27,6 @@ namespace Kunja.Models
         public decimal prijs { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<lodge> lodge { get; set; }
+        public virtual ICollection<lodge> lodges { get; set; }
     }
 }

@@ -17,14 +17,14 @@ namespace Kunja.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public boeking()
         {
-            this.reservering = new HashSet<reservering>();
+            this.reserverings = new HashSet<reservering>();
         }
     
         public int boekingID { get; set; }
-        public int gastID { get; set; }
+        public string AspNetUsersId { get; set; }
     
-        public virtual gast gast { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<reservering> reservering { get; set; }
+        public virtual ICollection<reservering> reserverings { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Kunja.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public lodge()
         {
-            this.reservering = new HashSet<reservering>();
+            this.reserverings = new HashSet<reservering>();
         }
     
         public int lodgeID { get; set; }
@@ -28,6 +28,6 @@ namespace Kunja.Models
     
         public virtual lodgetype lodgetype { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<reservering> reservering { get; set; }
+        public virtual ICollection<reservering> reserverings { get; set; }
     }
 }

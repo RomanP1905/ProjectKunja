@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A3D6D6_KunjaRensModelStoreContainer" CdmEntityContainer="DB_A3D6D6_KunjaRensEntities1">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.C__MigrationHistory)">
+        <MappingFragment StoreEntitySet="C__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.AspNetRoles)">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.AspNetUserClaims)">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.AspNetUserLogins)">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.AspNetUsers)">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="boeking">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.boeking)">
+        <MappingFragment StoreEntitySet="boeking">
+          <ScalarProperty Name="boekingID" ColumnName="boekingID" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lodge">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.lodge)">
+        <MappingFragment StoreEntitySet="lodge">
+          <ScalarProperty Name="lodgeID" ColumnName="lodgeID" />
+          <ScalarProperty Name="lodgeTypeID" ColumnName="lodgeTypeID" />
+          <ScalarProperty Name="lodgeNaam" ColumnName="lodgeNaam" />
+          <ScalarProperty Name="lodgeNR" ColumnName="lodgeNR" />
+          <ScalarProperty Name="bezettingsgraad" ColumnName="bezettingsgraad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lodgetype">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.lodgetype)">
+        <MappingFragment StoreEntitySet="lodgetype">
+          <ScalarProperty Name="lodgeTypeID" ColumnName="lodgeTypeID" />
+          <ScalarProperty Name="lodgeTypeNaam" ColumnName="lodgeTypeNaam" />
+          <ScalarProperty Name="lodgeTypeOmschrijving" ColumnName="lodgeTypeOmschrijving" />
+          <ScalarProperty Name="aantalpersonen" ColumnName="aantalpersonen" />
+          <ScalarProperty Name="prijs" ColumnName="prijs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservering">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_A3D6D6_KunjaRensModel.reservering)">
+        <MappingFragment StoreEntitySet="reservering">
+          <ScalarProperty Name="reserveringID" ColumnName="reserveringID" />
+          <ScalarProperty Name="lodgeID" ColumnName="lodgeID" />
+          <ScalarProperty Name="boekingID" ColumnName="boekingID" />
+          <ScalarProperty Name="incheckDatum" ColumnName="incheckDatum" />
+          <ScalarProperty Name="uitcheckDatum" ColumnName="uitcheckDatum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB_A3D6D6_KunjaRensModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="AspNetRoles_Id" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="AspNetUsers_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
